@@ -33,6 +33,7 @@ sub transform {
     my ($self, $text) = @_;
     my @ret;
     for my $token (split /$self->{match}/, $text) {
+        # FIXME do we have to do this O(n) every time?
         for my $handler (@{$self->{handlers}}) {
             if ($token =~ /$handler->[0]/) {
                 push @ret, $handler->[1]->($token);
