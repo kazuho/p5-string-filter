@@ -4,9 +4,9 @@ use warnings;
 use HTML::Entities;
 use Test::More;
 
-use_ok('Text::Transformer');
+use_ok('String::Filter');
 
-my $tf = Text::Transformer->new(
+my $tf = String::Filter->new(
     'http://[A-Za-z0-9_\.\%\?\#\@/]+' => sub {
         my $url = shift;
         qq{<a href="@{[encode_entities($url)]}">@{[encode_entities($url)]}</a>};

@@ -1,4 +1,4 @@
-package Text::Transformer;
+package String::Filter;
 
 use strict;
 use warnings;
