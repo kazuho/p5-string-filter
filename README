@@ -46,8 +46,9 @@ SYNOPSIS
 
 DESCRIPTION
     The module is a regexp-based string filter, that can merge multiple
-    conversion rules to convert strings. The primary target is to convert
-    inline markups (such as tweets of Twitter) to HTML.
+    conversion rules for converting strings. The primary target of the
+    module is to convert inline markups (such as the tweets of Twitter) to
+    HTML.
 
 FUNCTIONS
   new

@@ -5,6 +5,8 @@ use warnings;
 
 use Regexp::Assemble;
 
+our $VERSION = '0.01';
+
 sub new {
     my $klass = shift;
     my $args = @_ == 1 ? $_[0] : +{ @_ };
