@@ -102,7 +102,7 @@ String::Filter - a regexp-based string filter
                     '%s<a href="http://twitter.com/search?q=%s">%s</a>',
                     encode_entities($prefix),
                     encode_entities(uri_escape($hashtag)),
-                    $hashtag,
+                    encode_entities($hashtag),
                 );
             },
         ],
@@ -141,7 +141,7 @@ Converts the input string using the given rules and returns it.
 
 adds a conversion rule.  For each substring matching the regular expression the subref will be invoked with the substring as the only argument.  The subref should return the filtered output of the substring.
 
-=head3 default_rule([$subref])
+=head2 default_rule([$subref])
 
 setter / getter for the default conversion function.  The subref should accept a string and return the filtered output of the input.
 
