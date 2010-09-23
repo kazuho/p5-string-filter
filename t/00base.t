@@ -9,16 +9,16 @@ use_ok('String::Filter');
 
 my $sf = String::Filter->new(
     rules        => [
-        'http://[A-Za-z0-9_\-\~\.\%\?\#\@/]+' => sub {
+        'http://[A-Za-z0-9_\\-\\~\\.\\%\\?\\#\\@/]+' => sub {
             my $url = shift;
             qq{<a href="@{[encode_entities($url)]}">@{[encode_entities($url)]}</a>};
         },
-        '(?:^|\s)\@[A-Za-z0-9_]+' => sub {
+        '(?:^|\\s)\\@[A-Za-z0-9_]+' => sub {
             $_[0] =~ /^(.*?\@)(.*)$/;
             my ($prefix, $user) = ($1, $2);
             qq{$prefix<a href="http://twitter.com/@{[encode_entities($user)]}">$user</a>};
         },
-        '(?:^|\s)#[A-Za-z0-9_]+' => sub {
+        '(?:^|\\s)#[A-Za-z0-9_]+' => sub {
             $_[0] =~ /^(.?)(#.*)$/;
             my ($prefix, $hashtag) = ($1, $2);
             qq{$prefix<a href="http://twitter.com/search?q=@{[encode_entities(uri_escape($hashtag))]}"><b>@{[encode_entities($hashtag)]}</b></a>};

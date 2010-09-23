@@ -77,7 +77,7 @@ String::Filter - a regexp-based string filter
     # (handles url, @user, #hash)
     my $sf = String::Filter->new(
         rules        => [
-            'http://[A-Za-z0-9_\-\~\.\%\?\#\@/]+' => sub {
+            'http://[A-Za-z0-9_\\-\\~\\.\\%\\?\\#\\@/]+' => sub {
                 my $url = shift;
                 sprintf(
                     '<a href="%s">%s</a>',
@@ -85,7 +85,7 @@ String::Filter - a regexp-based string filter
                     encode_entities($url),
                 );
             },
-            '(?:^|\s)\@[A-Za-z0-9_]+' => sub {
+            '(?:^|\\s)\\@[A-Za-z0-9_]+' => sub {
                 $_[0] =~ /^(.*?\@)(.*)$/;
                 my ($prefix, $user) = ($1, $2);
                 sprintf(
@@ -95,7 +95,7 @@ String::Filter - a regexp-based string filter
                     encode_entities($user),
                 );
             },
-            '(?:^|\s)#[A-Za-z0-9_]+' => sub {
+            '(?:^|\\s)#[A-Za-z0-9_]+' => sub {
                 $_[0] =~ /^(.?)(#.*)$/;
                 my ($prefix, $hashtag) = ($1, $2);
                 sprintf(
